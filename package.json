@@ -11,6 +11,7 @@
     "form-data": "~0.1.4",
     "loopback": "2.16.0",
     "loopback-boot": "2.7.0",
+    "loopback-connector-es": "^0.3.0",
     "loopback-datasource-juggler": "2.25.0",
     "nconf": "^0.7.1",
     "newrelic": "~1.6.0",
