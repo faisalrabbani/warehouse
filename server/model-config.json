@@ -35,7 +35,7 @@
     "public": false
   },
   "GlobalConfigModel": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch",
     "public": true
   },
   "StoreConfigModel": {
