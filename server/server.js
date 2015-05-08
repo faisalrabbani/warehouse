@@ -2,6 +2,10 @@ global.Promise = require('bluebird');
 var loopback = require('loopback');
 var boot = require('loopback-boot');
 
+var path = require('path');
+var fileName = path.basename(__filename, '.js'); // gives the filename without the .js extension
+var log = require('debug')('shoppinpal:server:'+fileName);
+
 // HINT(s):
 //   Getting the app object:
 //     http://docs.strongloop.com/display/public/LB/Working+with+LoopBack+objects
