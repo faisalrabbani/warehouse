@@ -22,8 +22,10 @@ app.use(loopback.context());
 app.use(loopback.token({ params: ['state'] })); //http://apidocs.strongloop.com/loopback/#loopback-token
 app.use(function setCurrentUser(req, res, next) {
   if (!req.accessToken) {
+    //log('WARN: req.accessToken has not been set');
     return next();
   }
+  log('req.accessToken:', JSON.stringify(req.accessToken,null,2));
   app.models.UserModel.findById(req.accessToken.userId, function(err, user) {
     if (err) {
       return next(err);
@@ -32,8 +34,13 @@ app.use(function setCurrentUser(req, res, next) {
       return next(new Error('No user with this access token was found.'));
     }
     var loopbackContext = loopback.getCurrentContext();
+    log('loopbackContext', loopbackContext);
     if (loopbackContext) {
       loopbackContext.set('currentUser', user);
+      log('currentUser', loopbackContext.get('currentUser'));
+    }
+    else {
+      console.error('ERROR: could not set currentUser into loopbackContext');
     }
     next();
   });
